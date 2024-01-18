@@ -16,6 +16,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authConfig -> {
                     authConfig.requestMatchers("/").permitAll();
                     authConfig.requestMatchers("/user/**").authenticated();
+                    authConfig.requestMatchers("/tasks/**", "/users/**").authenticated();
                     authConfig.requestMatchers("/admin/**").denyAll();
                 })
                 .formLogin(Customizer.withDefaults())
